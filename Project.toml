@@ -1,0 +1,8 @@
+name = "QuantStudio"
+uuid = "5988455b-e7cf-4aac-8dac-baf68a99dbc5"
+authors = ["Nicholas Stone <stone.nicholas@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+Delta2 = "a5253c47-3b47-401b-8203-180358aa4e2a"

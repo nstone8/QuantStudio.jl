@@ -32,7 +32,6 @@ function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
         if !ismissing(startline)
             #reject everything after an empty line
             if all(split(line,",") .== "")
-                endline=linenumber
                 break
             end
             endline=linenumber

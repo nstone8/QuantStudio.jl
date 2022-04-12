@@ -1,15 +1,22 @@
 module QuantStudio
 using Delta2
 using CSV
+using DataFrames
 
 export quantstudio
 
 #make a singleton type for dispatch
-struct QuantStudio end
+struct QS end
 
-quantstudio=QuantStudio()
+quantstudio=QS()
 
-function Delta2.readpcr(::QuantStudio,csvfilename::AbstractString)::QPCRDataset
+"""
+```julia
+readpcr(quantstudio,filename)
+```
+Load a CSV file created by a QuantStudio instrument as a QPCRDataset.
+"""
+function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     tempbuf=IOBuffer()
     filelines=split(read(csvfilename,String),"\n")
     #find the end of the header
@@ -60,12 +67,12 @@ function Delta2.readpcr(::QuantStudio,csvfilename::AbstractString)::QPCRDataset
 end
 
 #wizard for performing DeltaCT
-function Delta2.DeltaCT(::QuantStudio)
+function Delta2.DeltaCT(::QS)
     #fill me in
 end
 
 #wizard for performing DDCT
-function Delta2.DDCT(::QuantStudio)
+function Delta2.DDCT(::QS)
     #fill me in
 end
 

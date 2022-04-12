@@ -18,7 +18,8 @@ Load a CSV file created by a QuantStudio instrument as a QPCRDataset.
 """
 function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     tempbuf=IOBuffer()
-    filelines=split(read(csvfilename,String),"\n")
+    filestring=replace(read(csvfilename,String),"\r\n"=>"\n") #fix line endings if on windows
+    filelines=split(filestring,"\n")
     #find the end of the header
     linenumber=1
     startline=missing

@@ -66,7 +66,6 @@ function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     return QPCRDataset(data)
 end
 
-#wizard for performing DeltaCT
 function askforpath()
     prompt="""
     Please enter the path to your qpcr data. This must be a .csv file in the format exported by a QuantStudio Instrument.
@@ -75,11 +74,25 @@ function askforpath()
     println(prompt)
     return strip(Delta2.escapechars,readline())
 end
+    
+#wizard for performing DeltaCT
+"""
+```julia
+DeltaCT(quantstudio)
+```
+Start a wizard for performing ΔCT on data collected using a QuantStudio instrument
+"""
 function Delta2.DeltaCT(::QS)
     readpcr(quantstudio,askforpath()) |> DeltaCT
 end
 
 #wizard for performing DDCT
+"""
+```julia
+DDCT(quantstudio)
+```
+Start a wizard for performing ΔΔCT on data collected using a QuantStudio instrument
+"""
 function Delta2.DDCT(::QS)
     readpcr(quantstudio,askforpath()) |> DDCT
 end

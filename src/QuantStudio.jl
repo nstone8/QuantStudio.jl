@@ -68,7 +68,8 @@ end
 
 function askforpath()
     prompt="""
-    Please enter the path to your qpcr data. This must be a .csv file in the format exported by a QuantStudio Instrument.
+    Please enter the path to your qpcr data.
+    This must be a .csv file in the format exported by a QuantStudio Instrument.
     Tip: try dragging the file onto this window
     """
     println(prompt)

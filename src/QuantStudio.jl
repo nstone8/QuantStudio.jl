@@ -73,7 +73,9 @@ function askforpath()
     Tip: try dragging the file onto this window
     """
     println(prompt)
-    return strip(Delta2.escapechars,readline())
+    response=strip(Delta2.escapechars,readline())
+    println()
+    return response
 end
     
 #wizard for performing DeltaCT

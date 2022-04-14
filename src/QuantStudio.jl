@@ -86,6 +86,7 @@ DeltaCT(quantstudio)
 Start a wizard for performing ΔCT on data collected using a QuantStudio instrument
 """
 function Delta2.DeltaCT(::QS)
+    println()
     readpcr(quantstudio,askforpath()) |> DeltaCT
 end
 
@@ -97,6 +98,7 @@ DDCT(quantstudio)
 Start a wizard for performing ΔΔCT on data collected using a QuantStudio instrument
 """
 function Delta2.DDCT(::QS)
+    println()
     readpcr(quantstudio,askforpath()) |> DDCT
 end
 

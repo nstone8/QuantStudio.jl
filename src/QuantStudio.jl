@@ -50,20 +50,7 @@ function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     seek(tempbuf,0)
     rawdata=CSV.read(tempbuf,DataFrame)
     close(tempbuf)
-    data=select(rawdata,"Sample Name" => function(s)
-                    #make sure sample names are always Strings
-                    string.(s)
-                end => :sample,"Target Name"=>function(t)
-                    #make sure targets are also strings
-                    string.(t)
-                    end => :target,"CT"=>ByRow(function(ct)
-                                                                                      if ct=="Undetermined"
-                                                                                          return Float64(40)
-                                                                                      else
-                                                                                          return parse(Float64,ct)
-                                                                                      end
-                                                                                  end)=>:ct)
-    return QPCRDataset(data)
+    return QPCRDataset(rawdata,"Sample Name", "Target Name", "CT", noamp_flag="Undetermined")
 end
 
 function askforpath()

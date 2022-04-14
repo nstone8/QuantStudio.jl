@@ -25,7 +25,7 @@ function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     startline=missing
     endline=missing
     for line in filelines
-        if ((split(line,",")[1] == "Well") && ismissing(startline)) #only want to take the first line that fits the bill
+        if ("Well" in (split(line,",")) && ismissing(startline)) #only want to take the first line that fits the bill
             #this is the line containing our column names
             startline=linenumber
         end

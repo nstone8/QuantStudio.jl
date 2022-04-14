@@ -50,7 +50,15 @@ function Delta2.readpcr(::QS,csvfilename::AbstractString)::QPCRDataset
     seek(tempbuf,0)
     rawdata=CSV.read(tempbuf,DataFrame)
     close(tempbuf)
-    return QPCRDataset(rawdata,"Sample Name", "Target Name", "CT", noamp_flag="Undetermined")
+    ct_col=nothing
+    if "CT" in names(rawdata)
+        ct_col="CT"
+    elseif "Cq" in names(rawdata)
+        ct_col="Cq"
+    else
+        error("couldn't find CT column in dataset")
+    end
+    return QPCRDataset(rawdata,"Sample Name", "Target Name", ct_col, noamp_flag="Undetermined")
 end
 
 function askforpath()

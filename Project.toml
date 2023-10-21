@@ -1,6 +1,6 @@
 name = "QuantStudio"
 uuid = "5988455b-e7cf-4aac-8dac-baf68a99dbc5"
-authors = ["Nicholas Stone <stone.nicholas@gmail.com>"]
+authors = ["Nicholas Stone <nicholasestone@proton.me>"]
 version = "0.1.0"
 
 [deps]
